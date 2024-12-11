@@ -20,6 +20,7 @@
 //
 // Effects: Equivalent to: return std::forward<T>(t);
 
+#include <string>
 #include <utility> // std::forward
 
 namespace beman::exemplar {
@@ -36,6 +37,16 @@ struct identity {
 
     using is_transparent = __is_transparent;
 };
+
+std::string platform() noexcept {
+#if defined(__clang__)
+    return "clang";
+#elif defined(__GNUC__) || defined(__GNUG__)
+    return "gnu";
+#elif defined(_MSC_VER)
+    return "msvc";
+#endif
+}
 
 } // namespace beman::exemplar
 
