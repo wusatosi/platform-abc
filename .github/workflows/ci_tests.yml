@@ -43,7 +43,7 @@ jobs:
         cpp_version: [17, 20, 23, 26]
         cmake_args:
           - description: "Default"
-            args: "-coverage"
+            args: "-DCMAKE_CXX_FLAGS=-coverage"
           - description: "TSan"
             args: "-DCMAKE_CXX_FLAGS=-fsanitize=thread"
           - description: "ASan"
@@ -75,7 +75,7 @@ jobs:
             cpp_version: 17
             cmake_args:
               description: "Default"
-              args: "-coverage"
+              args: "-DCMAKE_CXX_FLAGS=-coverage"
           - platform:
               description: "Windows MSVC"
               cpp: cl
