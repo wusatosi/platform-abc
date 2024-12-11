@@ -148,7 +148,7 @@ jobs:
         run: ctest --test-dir build --build-config Release
       - name: Generate Report
         run: |
-          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json --verbose
+          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
@@ -166,7 +166,7 @@ jobs:
         run: ctest --test-dir build --build-config Debug
       - name: Generate Report
         run: |
-          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json --verbose
+          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
