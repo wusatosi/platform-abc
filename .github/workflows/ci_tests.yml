@@ -35,10 +35,12 @@ jobs:
           - description: "Ubuntu GCC"
             cpp: g++
             c: gcc
+            cov: gcov
             os: ubuntu-latest
           - description: "Ubuntu Clang"
             cpp: clang++
             c: clang
+            cov: llvm-cov
             os: ubuntu-latest
         cpp_version: [17, 20, 23, 26]
         cmake_args:
@@ -53,6 +55,7 @@ jobs:
               description: "Ubuntu GCC"
               cpp: g++
               c: gcc
+              cov: gcov
               os: ubuntu-latest
             cpp_version: 17
             cmake_args:
@@ -62,6 +65,7 @@ jobs:
               description: "Ubuntu GCC"
               cpp: g++
               c: gcc
+              cov: gcov
               os: ubuntu-latest
             cpp_version: 17
             cmake_args:
@@ -71,6 +75,7 @@ jobs:
               description: "Windows MSVC"
               cpp: cl
               c: cl
+              cov: gcov
               os: windows-latest
             cpp_version: 17
             cmake_args:
@@ -80,6 +85,7 @@ jobs:
               description: "Windows MSVC"
               cpp: cl
               c: cl
+              cov: gcov
               os: windows-latest
             cpp_version: 17
             cmake_args:
@@ -140,7 +146,7 @@ jobs:
         run: ctest --test-dir build --build-config Release
       - name: Generate Report
         run: |
-          gcovr --filter include/ --coveralls coverage.json --verbose
+          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json --verbose
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
