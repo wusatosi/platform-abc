@@ -176,6 +176,7 @@ jobs:
 
   gtest-trail:
     runs-on: ubuntu-latest
+    if: always()
     needs: [gtest-test]
     steps:
       - name: Mark Coveralls Finished
