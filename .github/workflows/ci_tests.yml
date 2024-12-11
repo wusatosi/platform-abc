@@ -120,9 +120,11 @@ jobs:
           if [ "${{ matrix.platform.cpp }}" != "cl" ]; then
             ${{ matrix.platform.cpp }} --version
             ${{ matrix.platform.c }} --version
+            ${{ matrix.platform.cov }} --version
           else
             ${{ matrix.platform.cpp }}
             ${{ matrix.platform.c }}
+            ${{ matrix.platform.cov }}
           fi
 
           echo "Build system:"
@@ -164,7 +166,7 @@ jobs:
         run: ctest --test-dir build --build-config Debug
       - name: Generate Report
         run: |
-          gcovr --filter include/ --coveralls coverage.json --verbose
+          gcovr --gcov-executable ${{ matrix.platform.cov }} --filter include/ --coveralls coverage.json --verbose
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
