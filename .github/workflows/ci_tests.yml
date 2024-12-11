@@ -140,7 +140,7 @@ jobs:
         run: ctest --test-dir build --build-config Release
       - name: Generate Report
         run: |
-          gcovr --filter include/ --coveralls coverage.json
+          gcovr --filter include/ --coveralls coverage.json --verbose
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
@@ -158,7 +158,7 @@ jobs:
         run: ctest --test-dir build --build-config Debug
       - name: Generate Report
         run: |
-          gcovr --filter include/ --coveralls coverage.json
+          gcovr --filter include/ --coveralls coverage.json --verbose
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
